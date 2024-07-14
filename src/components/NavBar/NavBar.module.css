@@ -1,14 +1,35 @@
 .nav {
-    grid-area: n;
-    background-color: rgb(47, 47, 48);
-    padding: 20px;
-  }
+  grid-area: n;
+  background-color: rgb(47, 47, 48);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 
-  .item a{
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-  }
+.link {
+  background: transparent;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  transition: .2s all ease-out;
+}
 
-.item a.activeLink{
-  color: rgb(0, 0, 0);
+.link:hover {
+  color: #bcbcbc;
+}
+
+.link.active {
+  color: rgb(176, 176, 176);
+}
+
+.linkContent {
+  border-radius: 4px;
+  width: 100%;
+  padding: 4px;
+  background: transparent;
+}
+
+.linkContent:hover {
+  transition: .2s all ease-out;
+  background: #e8e8e83e;
 }

@@ -1,47 +1,48 @@
 import React from 'react';
 import styles from './Dialogs.module.css';
-import { NavLink } from 'react-router-dom';
+import DialogItem from './Dialog/DialogItem';
+import Message from './Message/Message';
+import { sendMessage, updateNewMessageBody } from '../../Redux/messagesReducer';
+import { useDispatch, useSelector } from 'react-redux';
 
-const DialogItem = (props) => {
-    return <div className={styles.item + '' + styles.active}>
-        <NavLink to={"/dialogs/1" + props.id}>{props.name}</NavLink>
-    </div>
-}
-
-const Message = (props) => {
-    return <div className={styles.message}>{props.message}</div>
-}
-
-const Dialogs = (props) => {
-
-    let dialogs = [
-        { id: 1, name: 'Nikolay' },
-        { id: 2, name: 'Lolla' },
-        { id: 3, name: 'Rosa' },
-        { id: 4, name: 'Antonio' }
-    ]
-
-    let messages = [
-        { id: 1, message: 'Hi' },
-        { id: 2, message: 'Hello' },
-        { id: 3, message: 'How are you?' },
-    ]
-
-    let dialogsElements = dialogs.map
+const Dialogs = () => {
+    const messagesPage = useSelector((state) => state.messages);
+    const dispatch = useDispatch()
+    
+    let dialogsElements = messagesPage.dialogs.map
         (d => <DialogItem name={d.name} id={d.id} />)
 
-    let messagesElements = messages.map
+    let messagesElements = messagesPage.messages.map
         (m => <Message message={m.message} id={m.id} />)
+
+    let newMessageBody = messagesPage.newMessageBody
+
+    let onSendMessageClick = () => {
+        dispatch(sendMessage())
+    }
+
+    let onNewMessageChange = (event) => {
+        let body = event.target.value
+        dispatch(updateNewMessageBody(body))
+    }
 
     return (
         <div className={styles.dialogs}>
             <div className={styles.dialogsItems}>
-               {dialogsElements}
+                {dialogsElements}
             </div>
             <div className={styles.messages}>
-                {messagesElements}
+                <div>{messagesElements}</div>
+                <div>
+                    <div>
+                        <textarea value={newMessageBody} onChange={onNewMessageChange} placeholder='Enter your message'></textarea>
+                    </div>
+                    <div>
+                        <button onClick={onSendMessageClick}>send</button>
+                    </div>
+                </div>
             </div>
-        </div> 
+        </div>
     )
 }
 

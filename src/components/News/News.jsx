@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './News.module.css';
+import { PagePlaceholder } from '../Common/PagePlaceholder/PagePlaceholder';
 
-const News = (props) => {
+const News = () => {
     return (
         <div>
-            bhjfdbhvhbdfhvewhdvhw
+            <PagePlaceholder />
         </div>
     )
 }

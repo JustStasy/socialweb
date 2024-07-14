@@ -1,4 +1,13 @@
-.ProfileImg{
-    padding: 10px 10px 10px 0px;
-   
+.wrapper {
+
+}
+
+.profileImg {
+   width: 100%;
+}
+
+.userPhoto {
+    width: 100px;
+    height: 100px;
+    padding: 10px 0 0 10px
 }

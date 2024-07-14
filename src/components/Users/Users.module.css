@@ -1,0 +1,31 @@
+.wrapper {
+    padding: 20px;
+}
+
+.usersWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
+.userWrapper {
+    display: flex;
+    gap: 10px
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px
+}
+
+.userPhoto{
+    border-radius: 50%;
+    box-shadow: 1px 1px 5px 3px #00000012;
+    width: 100px;
+    height: 100px;
+}
+
+.selectPage{
+    font-weight: 500;
+}

@@ -3,25 +3,43 @@ import styles from './NavBar.module.css';
 import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
+
+    const links = [
+        {
+            to: '/profile',
+            label: 'Profile'
+        },
+        {
+            to: '/dialogs',
+            label: 'Messages'
+        },
+        {
+            to: '/news',
+            label: 'News'
+        },
+        {
+            to: '/music',
+            label: 'Music'
+        },
+        {
+            to: '/settings',
+            label: 'Settings'
+        },
+        {
+            to: '/users',
+            label: 'Users'
+        },
+    ]
+
     return (
         <nav className={styles.nav}>
-            <div className={styles.item}>
-                <div>
-                    <NavLink to='/profile' activeClassName={styles.activeLink}>Profile</NavLink>
-                </div>
-                <div>
-                    <NavLink to='/dialogs' activeClassName={styles.activeLink}>Messanges</NavLink>
-                </div>
-                <div>
-                    <NavLink to='/News' activeClassName={styles.activeLink}>News</NavLink>
-                </div>
-                <div>
-                    <NavLink to='/Music' activeClassName={styles.activeLink}>Music</NavLink>
-                </div>
-                <div>
-                    <NavLink to='/Settings' activeClassName={styles.activeLink}>Settings</NavLink>
-                </div>
-            </div>
+            {links.map(el => <div>
+                <NavLink to={el.to} className={({ isActive }) => styles.link + ' ' + (isActive ? styles.active : undefined)}>
+                    <div className={styles.linkContent}>
+                        {el.label}
+                    </div>
+                </NavLink>
+            </div>)}
         </nav>
     )
 }
