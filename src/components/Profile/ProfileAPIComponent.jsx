@@ -2,17 +2,18 @@ import React from 'react';
 import Profile from './profile';
 import { setUsersProfileActionCreator } from '../../Redux/profilePageReducer';
 import axios from 'axios';
-import {withRouter} from "react-router-dom"
 
-class profileAPIComponent extends React.Component {
+class ProfileAPIComponent extends React.Component {
 
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`).then(response => {
-            debugger
-            this.props.dispatch(setUsersProfileActionCreator(response.data))
-        })
+        debugger
+        let userId = this.props.userId
+        if (!userId) { userId = 2 }
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
+            .then(response => {
+                this.props.dispatch(setUsersProfileActionCreator(response.data))
+            })
     }
-    debugger
     render() {
         return <div>
             <Profile {...this.props}
@@ -22,6 +23,5 @@ class profileAPIComponent extends React.Component {
     }
 }
 
-let withUrlDataContainerComponent = withRouter(profileAPIComponent)
 
-export default profileAPIComponent; 
+export default ProfileAPIComponent; 

@@ -4,6 +4,7 @@ import { Loader } from '../../Common/Loader/Loader';
 
 
 const ProfileInfo = (props) => {
+    console.log(props)
     if (!props.profile?.profile) {
         return <div>
             <Loader/>

@@ -24,10 +24,13 @@ const rerenderEntireTree = () => {
                 {
                     path: "profile",
                     element: <Profile />,
+                    index: true,
+                    
                 },
                 {
                     path: "profile/:id",
                     element: <ProfileContainer />,
+
                 },
                 {
                     path: "dialogs",
